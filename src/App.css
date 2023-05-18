@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    letter-spacing: 2px;
+}
+
+.app {
+    align-items: center;
+    margin-left: 230px;
+}
+
+.chat-window {
+    width: 80%;
+    height: 500px;
+    background-image: url("https://wallpapercave.com/wp/wp4410721.jpg");
+    border: 1px solid black;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outgoing {
+    background-color: lightgreen;
+    color: black;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.incoming {
+    background-color: lightblue;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 40px;
+    margin-left: 220px;
+    font-size: 20px;
+}
+
+form {
+    margin-top: 10px;
+    display: flex;
+}
+
+textarea {
+    height: 40px;
+    width: 200px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+button {
+    width: 80px;
+    margin-left: 20px;
+    font-size: 20px;
+    background-color: dodgerblue;
+    border: none;
+}
