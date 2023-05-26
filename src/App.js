@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import "./App.css";
 
-const socket = io("https://chat-app-backend-qfcv.onrender.com");
+const socket = io("https://chat-application-8a7q.onrender.com");
 
 function App() {
   const [username, setUsername] = useState("");
@@ -15,43 +15,38 @@ function App() {
     });
   }, [messages]);
 
-  const sendmessage = (e) => {
+  const sendMessage = (e) => {
     e.preventDefault();
-    socket.emit("chat", { username, message });
-    setMessage("");
+    if (username.trim() !== "" && message.trim() !== "") {
+      socket.emit("chat", { username, message });
+      setMessage("");
+    }
   };
 
   return (
     <div className="App">
-      <h1>React chat app</h1>
+      <h1>React Chat App</h1>
       <div className="chat-window">
         {messages.map((msg, idx) => (
-          <div>
-            {msg.username === username ? (
-              <p key={idx} className="outgoing">
-               {username} :  {msg.message}
-              </p>
-            ) : (
-              <p key={idx} className="incoming">
-                {msg.username} : {msg.message}
-              </p>
-            )}
+          <div key={idx} className={msg.username === username ? "outgoing" : "incoming"}>
+            <p>{msg.username}: {msg.message}</p>
           </div>
         ))}
       </div>
-      <div>
-        <form onSubmit={sendmessage}>
+      <div className="input-area">
+        <form onSubmit={sendMessage}>
           <input
             type="text"
-            placeholder="Enter user name..."
+            placeholder="Enter username..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
           <textarea
-            type="text"
             placeholder="Enter message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            required
           />
           <button type="submit">Send</button>
         </form>
